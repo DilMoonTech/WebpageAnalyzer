@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "test": "pytest",
+    "test-verbose": "pytest -v",
+    "test-coverage": "pytest --cov=src tests/"
+  }
+}

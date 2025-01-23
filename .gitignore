@@ -12,22 +12,22 @@ __pycache__/
 *.egg
 
 # Dependencies
-src/*.dist-info/
-src/bin/
-src/beautifulsoup4/
-src/requests/
-src/boto3/
-src/urllib3/
-src/botocore/
-src/bs4/
-src/certifi/
-src/charset*/
-src/dateutil/
-src/idna/
-src/jmespath/
-src/s3transfer/
-src/soupsieve/
-src/six.py
+**/*.dist-info/
+**/bin/
+**/beautifulsoup4/
+**/requests/
+**/boto3/
+**/urllib3/
+**/botocore/
+**/bs4/
+**/certifi/
+**/charset*/
+**/dateutil/
+**/idna/
+**/jmespath/
+**/s3transfer/
+**/soupsieve/
+**/six.py
 
 # AWS SAM
 .aws-sam/
@@ -42,3 +42,8 @@ samconfig.toml
 # OS
 .DS_Store
 Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
