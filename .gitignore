@@ -1,0 +1,44 @@
+# Virtual Environment
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+
+# Dependencies
+src/*.dist-info/
+src/bin/
+src/beautifulsoup4/
+src/requests/
+src/boto3/
+src/urllib3/
+src/botocore/
+src/bs4/
+src/certifi/
+src/charset*/
+src/dateutil/
+src/idna/
+src/jmespath/
+src/s3transfer/
+src/soupsieve/
+src/six.py
+
+# AWS SAM
+.aws-sam/
+samconfig.toml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
