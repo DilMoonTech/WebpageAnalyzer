@@ -4,12 +4,10 @@ from collections import Counter
 from typing import Dict, List, Any
 
 class WebpageAnalyzer:
-    def __init__(self, url: str):
+    def __init__(self, url: str, headers: Dict[str, str]):
         self.url = url
         self.soup = None
-        self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        }
+        self.headers = headers
 
     def fetch_page(self) -> None:
         """Fetch the webpage content"""

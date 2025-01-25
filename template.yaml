@@ -2,15 +2,36 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Webpage Structure Analyzer
 
+Globals:
+  Api:
+    Cors:
+      AllowMethods: "'GET'"
+      AllowHeaders: "'Content-Type'"
+      AllowOrigin: "'*'"
+    #EndpointConfiguration: REGIONAL
+
 Resources:
   WebpageAnalyzerFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: src/
       Handler: lambda_function.lambda_handler
-      Runtime: python3.9
+      Runtime: python3.12
       Timeout: 30
       MemorySize: 256
       Policies:
         - AWSLambdaBasicExecutionRole
-        
+      Environment:
+        Variables:
+          PYTHONPATH: /var/task/src
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /analyze
+            Method: get
+            
+Outputs:
+  WebpageAnalyzerApi:
+    Description: API Gateway endpoint URL
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/analyze"
