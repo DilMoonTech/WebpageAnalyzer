@@ -3,6 +3,15 @@ import responses
 from src.analyzer import WebpageAnalyzer
 from pathlib import Path
 
+test_header = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+    'Accept-Language': 'en-US,en;q=0.5',
+    'Accept-Encoding': 'gzip, deflate',
+    'Connection': 'keep-alive',
+    'Upgrade-Insecure-Requests': '1',
+    'Host': 'example.com'
+}
+
 @pytest.fixture
 def sample_html():
     fixture_path = Path(__file__).parent / "fixtures" / "sample_webpage.html"
@@ -10,7 +19,7 @@ def sample_html():
 
 @pytest.fixture
 def analyzer():
-    return WebpageAnalyzer("https://example.com")
+    return WebpageAnalyzer("https://example.com", test_header)
 
 class TestWebpageAnalyzer:
     @responses.activate

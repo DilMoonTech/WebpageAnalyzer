@@ -6,7 +6,10 @@ from unittest.mock import patch
 @pytest.fixture
 def valid_event():
     return {
-        "url": "https://example.com"
+        "httpMethod": "GET",
+        "queryStringParameters": {
+            "url": "https://example.com"
+        },
     }
 
 @pytest.fixture
@@ -36,7 +39,7 @@ class TestLambdaHandler:
         assert response['statusCode'] == 400
         assert 'URL is required' in response['body']
 
-    @patch('src.analyzer.WebpageAnalyzer.analyze')
+    @patch('analyzer.WebpageAnalyzer.analyze')
     def test_successful_analysis(self, mock_analyze, valid_event, analysis_result):
         mock_analyze.return_value = analysis_result
         
@@ -46,7 +49,7 @@ class TestLambdaHandler:
         body = json.loads(response['body'])
         assert all(key in body for key in analysis_result.keys())
 
-    @patch('src.analyzer.WebpageAnalyzer.analyze')
+    @patch('analyzer.WebpageAnalyzer.analyze')
     def test_analyzer_error(self, mock_analyze, valid_event):
         mock_analyze.side_effect = Exception("Analysis failed")
         

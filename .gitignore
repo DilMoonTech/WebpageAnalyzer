@@ -28,6 +28,7 @@ __pycache__/
 **/s3transfer/
 **/soupsieve/
 **/six.py
+package/
 
 # AWS SAM
 .aws-sam/
